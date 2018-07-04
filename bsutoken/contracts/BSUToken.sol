@@ -268,8 +268,8 @@ contract StandardToken is DetailedERC20, BasicToken {
 
 contract BSUToken is StandardToken {
 
-  constructor() public DetailedERC20("BSUToken", "BSU", 18) {
-    totalSupply_ = 50000000000000000000000000000;
+  constructor() public DetailedERC20("BSUToken", "BSU", 0) {
+    totalSupply_ = 1000000000;
     balances[msg.sender] = totalSupply_;
   }
 

@@ -15,10 +15,10 @@ const assertRevert = async promise => {
 
 contract('BSUToken', function ([owner, recipient, anotherAccount]) {
   const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-    const bsuAmount = 50000000000000000000000000000;
+    const bsuAmount = 1000000000;
     const _name = 'BSUToken';
     const _symbol = 'BSU';
-  const _decimals = 18;
+    const _decimals = 0;
 
 
   beforeEach(async function () {
@@ -71,7 +71,7 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
       const to = recipient;
 
       describe('when the sender does not have enough balance', function () {
-                const amount = bsuAmount + 1000000000000000000;
+                const amount = bsuAmount + 1;
 
         it('reverts', async function () {
           await assertRevert(this.token.transfer(to, amount, { from: owner }));
@@ -160,7 +160,7 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
       });
 
       describe('when the sender does not have enough balance', function () {
-                const amount = bsuAmount + 1000000000000000000;
+                const amount = bsuAmount + 1;
 
         it('emits an approval event', async function () {
           const { logs } = await this.token.approve(spender, amount, { from: owner });
@@ -269,7 +269,7 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
         });
 
         describe('when the owner does not have enough balance', function () {
-                    const amount = bsuAmount + 1000000000000000000;
+                    const amount = bsuAmount + 1;
 
           it('reverts', async function () {
             await assertRevert(this.token.transferFrom(owner, to, amount, { from: spender }));
@@ -279,7 +279,7 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
 
       describe('when the spender does not have enough approved balance', function () {
         beforeEach(async function () {
-                    await this.token.approve(spender, bsuAmount - 1000000000000000000, {from: owner});
+                    await this.token.approve(spender, bsuAmount - 1, {from: owner});
         });
 
         describe('when the owner has enough balance', function () {
@@ -291,7 +291,7 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
         });
 
         describe('when the owner does not have enough balance', function () {
-                    const amount = bsuAmount + 1000000000000000000;
+                    const amount = bsuAmount + 1;
 
           it('reverts', async function () {
             await assertRevert(this.token.transferFrom(owner, to, amount, { from: spender }));
@@ -342,20 +342,20 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
 
         describe('when the spender had an approved amount', function () {
           beforeEach(async function () {
-            await this.token.approve(spender, amount + 1000000000000000000, { from: owner });
+                        await this.token.approve(spender, amount + 1, {from: owner});
           });
 
           it('decreases the spender allowance subtracting the requested amount', async function () {
             await this.token.decreaseApproval(spender, amount, { from: owner });
 
             const allowance = await this.token.allowance(owner, spender);
-            assert.equal(allowance.toNumber(), 1000000000000000000);
+                        assert.equal(allowance.toNumber(), 1);
           });
         });
       });
 
       describe('when the sender does not have enough balance', function () {
-                const amount = bsuAmount + 1000000000000000000;
+                const amount = bsuAmount + 1;
 
         it('emits an approval event', async function () {
           const { logs } = await this.token.decreaseApproval(spender, amount, { from: owner });
@@ -378,14 +378,14 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
 
         describe('when the spender had an approved amount', function () {
           beforeEach(async function () {
-            await this.token.approve(spender, amount + 1000000000000000000, { from: owner });
+                        await this.token.approve(spender, amount + 1, {from: owner});
           });
 
           it('decreases the spender allowance subtracting the requested amount', async function () {
             await this.token.decreaseApproval(spender, amount, { from: owner });
 
             const allowance = await this.token.allowance(owner, spender);
-            assert.equal(allowance.toNumber(), 1000000000000000000);
+                        assert.equal(allowance.toNumber(), 1);
           });
         });
       });
@@ -455,7 +455,7 @@ contract('BSUToken', function ([owner, recipient, anotherAccount]) {
       });
 
       describe('when the sender does not have enough balance', function () {
-                const amount = bsuAmount + 1000000000000000000;
+                const amount = bsuAmount + 1;
 
         it('emits an approval event', async function () {
           const { logs } = await this.token.increaseApproval(spender, amount, { from: owner });
