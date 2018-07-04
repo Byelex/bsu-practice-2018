@@ -26,6 +26,8 @@
 #### Токены
 
 #### Тестовая сеть Rinkeby
+- [Rinkeby Authenticated Faucet](https://faucet.rinkeby.io/)
+
 
 #### Узел сети
 geth (https://geth.ethereum.org/downloads/)
