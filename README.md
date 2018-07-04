@@ -3,7 +3,7 @@
 ## Задание
 Общая цель практики познакомится с блокчейн технологиями на примере работы с Ethereum смарт-контрактами.
 
-В тестовую сеть Rinkeby загружен смарт контракт токена BsuToken. Адрес контракта 0x...
+В тестовую сеть Rinkeby загружен смарт контракт токена BsuToken. Адрес контракта [0x97ce6ce1ddb481a9b0fb8e2ce7316cfd9ff6f534](https://rinkeby.etherscan.io/address/0x97ce6ce1ddb481a9b0fb8e2ce7316cfd9ff6f534).
 
 Для работы с Ethereum сетью предлагается использовать Java библотеку [Web3j](https://github.com/web3j/web3j)
 
